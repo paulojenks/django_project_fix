@@ -1,0 +1,41 @@
+{% extends 'menu/layout.html' %}
+{% block content %}
+    <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="post">
+                        {% for menu in menus %}
+                            {% if menu.expiration_date %}
+                                <div class="date">
+                                    Expires on: {{ menu.expiration_date }}
+                                </div>
+                            {% endif %}
+                            <h1>
+                                {% if user.is_authenticated %}
+                                    <a class="btn btn-default" href="{% url 'menu:menu_edit' pk=menu.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                {% endif %}
+                                <a href="{% url 'menu:menu_detail' pk=menu.pk %}">{{ menu.season }}</a>
+                            </h1>
+                            <p>{{ menu.items.all|join:", "}}</p>
+                        {% endfor %}
+
+                        <div class="pagination">
+    <span class="step-links">
+        {% if menus.has_previous %}
+            <a href="?page={{ menus.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ menus.number }} of {{ menus.paginator.num_pages }}.
+        </span>
+
+        {% if menus.has_next %}
+            <a href="?page={{ menus.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

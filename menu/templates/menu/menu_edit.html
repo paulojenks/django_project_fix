@@ -1,0 +1,15 @@
+{% extends 'menu/layout.html' %}
+{% block content %}
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Change menu</h1>
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ edit_form.as_p }}
+    <input type="submit" class="button-primary" value="Submit">
+</form>
+                </div>
+            </div>
+        </div>
+{% endblock %}

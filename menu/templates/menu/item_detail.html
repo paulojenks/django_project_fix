@@ -1,0 +1,21 @@
+{% extends 'menu/layout.html' %}
+{% block content %}
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="post">
+                        <h1>{{ item.name }}</h1>
+                        <p><strong>Head Chef:</strong> {{ item.chef }}</p>
+                        <p>{{ item.description }}</p>
+                        <p><strong>Ingredients: </strong></p>
+                            {% for ingredient in item.ingredients.all %}
+                            <li>{{ ingredient }}</li>
+                            {% endfor %}
+                        {% if item.standard %}
+                            <p><em>This item is available year-round.</em></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
