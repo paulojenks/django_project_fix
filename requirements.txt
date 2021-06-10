@@ -1,5 +1,5 @@
 coverage==5.0a3
-Django==2.1.2
+Django==2.2.24
 django-debug-toolbar==1.10.1
 pytz==2018.7
 selenium==3.14.1
